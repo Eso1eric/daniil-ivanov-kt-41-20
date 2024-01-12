@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ycheba\\KT\\pp\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20.csproj": {}
+    "C:\\Users\\Admin\\RiderProjects\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20.csproj": {}
   },
   "projects": {
-    "D:\\ycheba\\KT\\pp\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20.csproj": {
+    "C:\\Users\\Admin\\RiderProjects\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ycheba\\KT\\pp\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\RiderProjects\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20.csproj",
         "projectName": "daniil-ivanov-kt-41-20",
-        "projectPath": "D:\\ycheba\\KT\\pp\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20.csproj",
+        "projectPath": "C:\\Users\\Admin\\RiderProjects\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\ycheba\\KT\\pp\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\RiderProjects\\daniil-ivanov-kt-41-20\\daniil-ivanov-kt-41-20\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -45,9 +45,19 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
             "NLog.Web.AspNetCore": {
               "target": "Package",
               "version": "[5.3.4, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.11, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
