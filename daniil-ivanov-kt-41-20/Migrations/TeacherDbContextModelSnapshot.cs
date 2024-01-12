@@ -42,7 +42,7 @@ namespace daniil_ivanov_kt_41_20.Migrations
                     b.HasKey("Id")
                         .HasName("pk_cs_degrees_degree_id");
 
-                    b.ToTable("Degrees");
+                    b.ToTable("cs_degrees", (string)null);
                 });
 
             modelBuilder.Entity("daniil_ivanov_kt_41_20.Model.Department", b =>
@@ -65,9 +65,6 @@ namespace daniil_ivanov_kt_41_20.Migrations
                         .HasColumnName("c_fullname")
                         .HasComment("Полное наименование");
 
-                    b.Property<int>("HeadTeacherId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("ShortName")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -77,8 +74,6 @@ namespace daniil_ivanov_kt_41_20.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_cs_departments_department_id");
-
-                    b.HasIndex(new[] { "HeadTeacherId" }, "idx_cs_departments_fk_f_headteacher_id");
 
                     b.ToTable("cs_departments", (string)null);
                 });
@@ -103,7 +98,7 @@ namespace daniil_ivanov_kt_41_20.Migrations
                     b.HasKey("Id")
                         .HasName("pk_cs_positions_position_id");
 
-                    b.ToTable("Positions");
+                    b.ToTable("cs_positions", (string)null);
                 });
 
             modelBuilder.Entity("daniil_ivanov_kt_41_20.Model.Subject", b =>
@@ -143,6 +138,9 @@ namespace daniil_ivanov_kt_41_20.Migrations
                     b.Property<int>("DegreeId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Lastname")
                         .HasMaxLength(50)
                         .HasColumnType("varchar")
@@ -166,10 +164,17 @@ namespace daniil_ivanov_kt_41_20.Migrations
                         .HasColumnName("c_surname")
                         .HasComment("Фамилия");
 
+                    b.Property<bool>("isHeadTeacher")
+                        .HasColumnType("bool")
+                        .HasColumnName("b_isHeadTeacher")
+                        .HasComment("Заведующий кафедры");
+
                     b.HasKey("Id")
                         .HasName("pk_cd_teachers_teacher_id");
 
                     b.HasIndex(new[] { "DegreeId" }, "idx_cd_teachers_fk_f_degree_id");
+
+                    b.HasIndex(new[] { "DepartmentId" }, "idx_cd_teachers_fk_f_department_id");
 
                     b.HasIndex(new[] { "PositionId" }, "idx_cd_teachers_fk_f_position_id");
 
@@ -210,18 +215,6 @@ namespace daniil_ivanov_kt_41_20.Migrations
                     b.ToTable("cd_workloads", (string)null);
                 });
 
-            modelBuilder.Entity("daniil_ivanov_kt_41_20.Model.Department", b =>
-                {
-                    b.HasOne("daniil_ivanov_kt_41_20.Model.Teacher", "HeadTeacher")
-                        .WithMany()
-                        .HasForeignKey("HeadTeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_f_headteacher_id");
-
-                    b.Navigation("HeadTeacher");
-                });
-
             modelBuilder.Entity("daniil_ivanov_kt_41_20.Model.Subject", b =>
                 {
                     b.HasOne("daniil_ivanov_kt_41_20.Model.Teacher", "Teacher")
@@ -243,6 +236,13 @@ namespace daniil_ivanov_kt_41_20.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_f_degree_id");
 
+                    b.HasOne("daniil_ivanov_kt_41_20.Model.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_f_department_id");
+
                     b.HasOne("daniil_ivanov_kt_41_20.Model.Position", "Position")
                         .WithMany()
                         .HasForeignKey("PositionId")
@@ -251,6 +251,8 @@ namespace daniil_ivanov_kt_41_20.Migrations
                         .HasConstraintName("fk_f_position_id");
 
                     b.Navigation("Degree");
+
+                    b.Navigation("Department");
 
                     b.Navigation("Position");
                 });

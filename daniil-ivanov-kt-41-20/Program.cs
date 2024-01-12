@@ -1,4 +1,5 @@
 using daniil_ivanov_kt_41_20.Database;
+using daniil_ivanov_kt_41_20.Extensions;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
@@ -13,8 +14,24 @@ try
     builder.Services.AddSwaggerGen();
     builder.Services.AddDbContext<TeacherDbContext>(options =>
         options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+    builder.Services.AddServices();
+    
     var app = builder.Build();
+
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            var context = services.GetRequiredService<TeacherDbContext>();
+            context.InitializeWithDefaultValues();
+        }
+        catch (Exception ex)
+        {
+            var log = services.GetRequiredService<ILogger<Program>>();
+            log.LogError(ex, "Error while initializing database");
+        }
+    }
 
     if (app.Environment.IsDevelopment())
     {

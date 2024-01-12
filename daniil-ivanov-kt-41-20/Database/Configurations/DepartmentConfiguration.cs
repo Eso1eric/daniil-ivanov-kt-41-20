@@ -31,18 +31,7 @@ public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
             .HasColumnType(ColumnType.Date)
             .HasColumnName("d_createdate")
             .HasComment("Дата основания");
-        
-        builder.ToTable(TableName)
-            .HasOne(e => e.HeadTeacher)
-            .WithMany()
-            .HasForeignKey(e => e.HeadTeacherId)
-            .HasConstraintName("fk_f_headteacher_id")
-            .OnDelete(DeleteBehavior.Cascade);
 
-        builder.ToTable(TableName)
-            .HasIndex(e => e.HeadTeacherId, $"idx_{TableName}_fk_f_headteacher_id");
-
-        builder.Navigation(e => e.HeadTeacher)
-            .AutoInclude();
+        builder.ToTable(TableName);
     }
 }

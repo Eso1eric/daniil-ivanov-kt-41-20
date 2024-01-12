@@ -24,5 +24,7 @@ public class PositionConfiguration : IEntityTypeConfiguration<Position>
             .HasColumnType(ColumnType.String).HasMaxLength(50)
             .HasColumnName("c_name")
             .HasComment("Название должности");
+
+        builder.ToTable(TableName);
     }
 }

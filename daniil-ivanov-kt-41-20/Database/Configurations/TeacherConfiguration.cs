@@ -31,6 +31,12 @@ public class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
             .HasColumnType(ColumnType.String).HasMaxLength(50)
             .HasColumnName("c_lastname")
             .HasComment("Отчество");
+        
+        builder.Property(e => e.isHeadTeacher)
+            .IsRequired()
+            .HasColumnType(ColumnType.Bool)
+            .HasColumnName("b_isHeadTeacher")
+            .HasComment("Заведующий кафедры");
 
         builder.ToTable(TableName)
             .HasOne(e => e.Degree)
@@ -56,6 +62,19 @@ public class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
             .HasIndex(e => e.PositionId, $"idx_{TableName}_fk_f_position_id");
 
         builder.Navigation(e => e.Position)
+            .AutoInclude();
+        
+        builder.ToTable(TableName)
+            .HasOne(e => e.Department)
+            .WithMany()
+            .HasForeignKey(e => e.DepartmentId)
+            .HasConstraintName("fk_f_department_id")
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.ToTable(TableName)
+            .HasIndex(e => e.DepartmentId, $"idx_{TableName}_fk_f_department_id");
+
+        builder.Navigation(e => e.Department)
             .AutoInclude();
     }
 }

@@ -24,5 +24,7 @@ public class DegreeConfiguration : IEntityTypeConfiguration<Degree>
             .HasColumnType(ColumnType.String).HasMaxLength(50)
             .HasColumnName("c_name")
             .HasComment("Название ученой степени");
+
+        builder.ToTable(TableName);
     }
 }
