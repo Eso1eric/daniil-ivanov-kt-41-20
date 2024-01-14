@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "daniil-ivanov-kt-41-20", "daniil-ivanov-kt-41-20\daniil-ivanov-kt-41-20.csproj", "{BCED84C2-4517-4C32-999F-0AAB18592F82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{06ABB51A-39E3-4B14-B863-46DA58F35C05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BCED84C2-4517-4C32-999F-0AAB18592F82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCED84C2-4517-4C32-999F-0AAB18592F82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCED84C2-4517-4C32-999F-0AAB18592F82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06ABB51A-39E3-4B14-B863-46DA58F35C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06ABB51A-39E3-4B14-B863-46DA58F35C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06ABB51A-39E3-4B14-B863-46DA58F35C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06ABB51A-39E3-4B14-B863-46DA58F35C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
